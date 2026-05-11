@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //  Yris is a recreation of the unfinished Nelva project which prints
 //  system and hardware informatin for unix systems
 //
@@ -17,6 +18,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+=======
+>>>>>>> origin/main
 #ifndef SOFTWARE_H
 #define SOFTWARE_H
 
