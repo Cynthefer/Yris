@@ -17,42 +17,12 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-//project headers
+#pragma once
+
+#ifndef USER_H
+#define USER_H
+#endif //USE_H
+
 #include <yris.h>
 
-
-//headers and libraries
-#include <initializer_list>
-
-using namespace std;
-
-struct initializer {
-    initializer(){
-        //nelva();
-    }
-} initializer;
-
-int main(int argc, char* argv[]){
-    /*bool main = false;
-    
-    for(int i = 1; i < argc; ++i){
-        string arg = argv[i];
-        main = true;
-
-        if(arg == "-h" || arg == "--help"){
-            help();
-        } else if( arg == "-v" || arg == "--version"){
-            version();
-        } else if( arg == "-u" || arg == "--user"){
-            user();
-        } else if (arg == "-o" || arg == "--operating-system"){
-            operating();
-        }
-    };*/
-    
-    if(!main){
-        //default program
-        yris::yris_init_t();
-    }
-    return success;
-}
+int yris::yris_user_t();

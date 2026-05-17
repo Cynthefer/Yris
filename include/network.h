@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //  Yris is a recreation of the unfinished Nelva project which prints
 //  system and hardware informatin for unix systems
 //
@@ -18,15 +17,5 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-=======
->>>>>>> origin/main
-#pragma once
-
-#ifndef HARDWARE_H
-#define HARDWARE_H
-
-#ifdef _WIN32
-#else
-
-#endif//_WIN32
-#endif//HARDWARE_H
+//headers in the include directory
+#include <hardware.h>

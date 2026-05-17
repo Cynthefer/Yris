@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //  Yris is a recreation of the unfinished Nelva project which prints
 //  system and hardware informatin for unix systems
 //
@@ -16,7 +15,3 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-
-//headers in the include directory
-#include <hardware.h>

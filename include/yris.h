@@ -17,42 +17,44 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-//project headers
-#include <yris.h>
+#pragma once
 
+#ifndef NELVA_H
+#define NELVA_H
+#endif //NELVA_H
 
-//headers and libraries
-#include <initializer_list>
+#ifndef VERSION
+#define VERSION "1.0.1"
+#endif //VERSION
 
-using namespace std;
+#ifndef AUTHOR
+#define AUTHOR "Ntando Khanyile"
+#endif //AUTHOR
 
-struct initializer {
-    initializer(){
-        //nelva();
-    }
-} initializer;
+#ifndef DEVELOPER
+#define DEVELOPER AUTHOR
+#endif //DEVELOPER
 
-int main(int argc, char* argv[]){
-    /*bool main = false;
-    
-    for(int i = 1; i < argc; ++i){
-        string arg = argv[i];
-        main = true;
+#ifndef OUTPUT
+#define success 0
+#endif //OUTPUT
 
-        if(arg == "-h" || arg == "--help"){
-            help();
-        } else if( arg == "-v" || arg == "--version"){
-            version();
-        } else if( arg == "-u" || arg == "--user"){
-            user();
-        } else if (arg == "-o" || arg == "--operating-system"){
-            operating();
-        }
-    };*/
-    
-    if(!main){
-        //default program
-        yris::yris_init_t();
-    }
-    return success;
+struct uservariables{};
+
+namespace yris { //functions to initialise variables for various information
+
+    int yris_init_t();
+
+    int yris_user_t();
+
+    int yris_system_t();
+
+    int yris_network_t();
+
+    int yris_battery_t();
+
+    int yris_cpu_t();
+
+    int yris_memory_t();
+
 }
