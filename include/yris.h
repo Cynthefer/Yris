@@ -16,10 +16,45 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef NETWORK_H
-#define NETWORK_H
 
-#include <httpli
+#pragma once
 
+#ifndef NELVA_H
+#define NELVA_H
+#endif //NELVA_H
 
-#endif //NETWORK_H
+#ifndef VERSION
+#define VERSION "1.0.1"
+#endif //VERSION
+
+#ifndef AUTHOR
+#define AUTHOR "Ntando Khanyile"
+#endif //AUTHOR
+
+#ifndef DEVELOPER
+#define DEVELOPER AUTHOR
+#endif //DEVELOPER
+
+#ifndef OUTPUT
+#define success 0
+#endif //OUTPUT
+
+struct uservariables{};
+
+namespace yris { //functions to initialise variables for various information
+
+    int yris_init_t();
+
+    int yris_user_t();
+
+    int yris_system_t();
+
+    int yris_network_t();
+
+    int yris_battery_t();
+
+    int yris_cpu_t();
+
+    int yris_memory_t();
+
+}

@@ -15,7 +15,7 @@ SOURCES = main.cpp $(wildcard src/*cpp)
 OUTPUT = nelva
 
 $(TARGET): $(SOURCES)
-	$(CXX) $(CXXFLAGS) $(SOURCES) -o $(OUTPUT)
+	$(CXX) $(CXXFLAGS) $(SOURCES) -o build/$(OUTPUT)
 
 $(INSTALL): $(TARGET)
 	$(INSTALL) -d $(BINDIR)

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //  Yris is a recreation of the unfinished Nelva project which prints
 //  system and hardware informatin for unix systems
 //
@@ -18,19 +17,35 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-=======
->>>>>>> origin/main
-#ifndef NELVA_H
-#define NELVA_H
-#define VERSION "1.0.1"
-#define AUTHOR "Ntando Khanyile"
-#define DEVELOPER AUTHOR
-    #include <cstdlib>
-    #include <string>
-    #include <iomanip>
+//yris project headers
+#include <yris.h>
+#include <user.h>
 
-    using namespace std;
 
-    int help(), version(), user(), operating(), nelva(), oper(), intro();
+//other headers and libraries
+#include <pwd.h>
+#include <ctime>
+#include <string>
+#include <unistd.h>
+#include <sys/resource.h>
 
-#endif//NELVA_H
+
+using namespace yris;
+
+std::string username;
+uid_t user_id;
+
+
+
+int yris_user_t(){
+    //username and user_id block
+    uid_t uid = getuid();
+    struct passwd* pw = getpwuid(uid);
+    if(pw){
+        username = pw->pw_name;
+        user_id = pw->pw_uid;
+    }
+    
+
+    return success;
+};
