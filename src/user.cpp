@@ -31,8 +31,9 @@
 
 
 using namespace yris;
+using namespace std;
 
-std::string username;
+string username, fullname, role_str;
 uid_t user_id;
 
 
@@ -46,16 +47,33 @@ int yris_user_t(){
         user_id = pw->pw_uid;
     } else {
       username = "unknown";
-      user_id = "unknown";
     }
-    
+
+    //fullname block
+    if(pw->pw_gecos){
+        fullname = pw->pw_gecos;
+        size_t comma = fullname.find(',');
+        if(comma != string::npos){
+            fullname = fullname.substr(0, comma);
+        }
+    } else {
+        fullname = "Unknown";
+    }
     
     //account role block
-    enum role_converter {
-      int 0 = "root",
-      int 27 = username,
+    uid_t role;
+
+    if(pw){
+        role = pw->pw_uid;
     }
-    
+    switch(role){
+        case 0:
+            role_str = "Root";
+        case 1000:
+            role_str = "User";
+        default:
+            role_str = "Other";
+    }            
 
     return success;
 };

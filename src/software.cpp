@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //  Yris is a recreation of the unfinished Nelva project which prints
 //  system and hardware informatin for unix systems
 //
@@ -19,4 +18,4 @@
 
 
 //headers in the include directory
-#include <software.h>
+#include <yris.h>
