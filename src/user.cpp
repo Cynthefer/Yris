@@ -44,6 +44,16 @@ int yris_user_t(){
     if(pw){
         username = pw->pw_name;
         user_id = pw->pw_uid;
+    } else {
+      username = "unknown";
+      user_id = "unknown";
+    }
+    
+    
+    //account role block
+    enum role_converter {
+      int 0 = "root",
+      int 27 = username,
     }
     
 
