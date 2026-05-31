@@ -2,7 +2,7 @@ CXX = g++
 
 PREFIX = /usr/local/
 
-BINDIR = $(PREFIX)/bin
+BINDIR = $(PREFIX)bin
 
 INSTALL = install
 
@@ -12,10 +12,11 @@ CXXFLAGS = -Iinclude
 
 SOURCES = main.cpp $(wildcard src/*cpp)
 
-OUTPUT = nelva
+OUTPUT = build/yris
 
 $(TARGET): $(SOURCES)
-	$(CXX) $(CXXFLAGS) $(SOURCES) -o build/$(OUTPUT)
+	clear
+	$(CXX) $(CXXFLAGS) $(SOURCES) -o $(OUTPUT)
 
 $(INSTALL): $(TARGET)
 	$(INSTALL) -d $(BINDIR)
@@ -29,5 +30,8 @@ test: $(TARGET)
 
 clean:
 	rm -rf $(OUTPUT)
+
+uninstall:
+	rm -rf /usr/local/bin/yris
 
 .PHONY: build install clean test

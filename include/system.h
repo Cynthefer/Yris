@@ -15,3 +15,9 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+//headers in the include directory
+#include <yris.h>
+
+
+int yris::yris_system_t();

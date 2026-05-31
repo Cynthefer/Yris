@@ -19,3 +19,25 @@
 
 //headers in the include directory
 #include <yris.h>
+#include <system.h>
+
+//system headers
+#include <string>
+#include <sys/utsname.h>
+
+
+using namespace yris;
+using namespace std;
+
+string os_name, kernel;
+
+int yris_system_t(){
+    struct utsname sys;
+    uname(&sys);
+
+    os_name = sys.sysname;
+
+    kernel = sys.version;
+
+    return success;
+}
