@@ -16,3 +16,12 @@ Nelva is an open source, cross platform and compiled specification commandline t
     <li><b>Memory Information</b></li>
     <li><b>Display Information</b></li>
 </ol>
+
+<p>The project file structure is categorized as such:</p>
+</br></br>
+<h3>/docs</h3>
+<ul><li>This directory contains the tool documentation and how to use it.</li></ul>
+<h3>/include</h3>
+<ul><li>This directory contains the header files and source files for the tool along with it's functions</li></ul>
+<h3>/src</h3>
+<ul><li>This directory contains the functions to print out the system information on the terminal.</li></ul>
