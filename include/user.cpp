@@ -19,6 +19,7 @@
 
 //system based headers
 #if defined(_WIN32) || defined(_WIN64)
+    #include <lm.h>
     #include <Lmcons.h>
     #include <windows.h>
 #elif defined(__linux__) || defined(__unix__)
@@ -38,10 +39,14 @@
 
 using namespace std;
 
+User::User(){
+    void set_username();
+}
+
 void User::set_username(){
     #ifdef defined(__linux__ ) || defined(__unix__)
 
-        uid_t uid = getuid()
+        uid_t uid = getuid();
         struct passwd* pw = getpwuid(uid);
         if(pw){
             username = pw->pw_name;
@@ -59,5 +64,19 @@ void User::set_username(){
 
         username = "unknown";
 
+    #endif
+}
+
+void User::set_fullname(){
+    #ifdef defined(__linux__) || defined(__unix__)
+
+        uid_t uid = getuid();
+        struct passwd* pw = getpwuid(uid);
+        if(pw){
+            fullname = pw->pw_gecos;
+        }
+
+    #elif defined(_WIN32) || defined(_WIN64)
+        
     #endif
 }

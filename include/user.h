@@ -26,7 +26,9 @@ class User{
     public:
         string username, fullname;
 
-        uid_t user_id, group_id;
+        uid_t user_id;
+
+        gid_t group_id;
 
         time_t created;
     

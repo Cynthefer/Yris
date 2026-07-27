@@ -7,7 +7,7 @@
 </div>
 
 <p>
-Nelva is an open source, cross platform and compiled specification commandline tool. It is written in <i>C++</i> to ensure memory efficiency, fast performance & general specifications. It can display both hardware and software information with a simple command or specific information with arguments on execution. It can display:
+Yris is an open source, cross platform and compiled specification commandline tool. It is written in <i>C++</i> to ensure memory efficiency, fast performance & access to low-level general specifications. It can display both hardware and software information with a simple command or specific information with arguments on execution. It can display:
 </p>
 
 <ol>
@@ -18,7 +18,6 @@ Nelva is an open source, cross platform and compiled specification commandline t
 </ol>
 
 <p>The project file structure is categorized as such:</p>
-</br></br>
 <h3>/docs</h3>
 <ul><li>This directory contains the tool documentation and how to use it.</li></ul>
 <h3>/include</h3>
