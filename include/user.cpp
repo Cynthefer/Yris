@@ -22,6 +22,7 @@
     #include <lm.h>
     #include <Lmcons.h>
     #include <windows.h>
+    #pragma comment(lib, "netapi32.lib")
 #elif defined(__linux__) || defined(__unix__)
     #include <pwd.h>
     #include <sys/unistd.h>
@@ -41,6 +42,7 @@ using namespace std;
 
 User::User(){
     void set_username();
+    void set_fullname();
 }
 
 void User::set_username(){
@@ -77,6 +79,32 @@ void User::set_fullname(){
         }
 
     #elif defined(_WIN32) || defined(_WIN64)
+        
+        char name[256];
+        DWORD size = 256;
+        GetUserNameA(name, &size);
+
+        LPUSER_INFO_2 info;
+        NetUserGetInfo(NULL, name, 2, (LBYTE*)&info);
+
+        char buffer[256];
+        WideCharToMultiByte(CP_ACP, 0, info->usri2_full_name, -1, buffer, 256, NULL, NULL);
+        fullname = buffer;
+
+        NetApiBufferFree(info);
+    #endif
+}
+
+void User::set_user_id(){
+    #ifdef defined(__linux__) || defined(__unix__)
+
+        uid_t uid = getuid();
+        struct passwd* pw = getpwuid(uid);
+        if(pw){
+            user_id = pw->pw_uid;
+        }
+    #elif defined(_WIN32) || defined(_WIN64)
+
         
     #endif
 }
