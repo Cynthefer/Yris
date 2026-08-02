@@ -16,27 +16,27 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     */
 
-#ifndef USER_H
-#define USER_H
+#ifndef SYSTEM_H
+#define SYSTEM_H
 #endif
+
+#pragma once
 
 #include <string>
 
-class User{
+using namespace std;
+
+class OS{
     public:
-        string username, fullname;
-
-        uid_t user_id;
-
-        gid_t group_id;
-
-        time_t created;
+        string os_name;
+        string version;
+        string release;
+        string architecture;
     
     private:
-        User();
-        void set_username();
-        void set_fullname();
-        void set_user_id();
-        void set_group_id();
-        void set_creationDate();
+        OS();
+        void set_os();
+        void set_version();
+        void set_release();
+        void set_architecture();
 };

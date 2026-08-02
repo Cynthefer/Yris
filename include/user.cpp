@@ -41,8 +41,11 @@
 using namespace std;
 
 User::User(){
-    void set_username();
-    void set_fullname();
+    set_username();
+    set_fullname();
+    set_user_id();
+    set_group_id();
+    set_creationDate();
 }
 
 void User::set_username(){
@@ -106,5 +109,27 @@ void User::set_user_id(){
     #elif defined(_WIN32) || defined(_WIN64)
 
         
+    #endif
+}
+
+void User::set_group_id(){
+    #ifdef defined(__linux__) || defined(__unix__)
+
+        uid_t uid = getuid();
+        struct passwd* pw = getpwuid(uid);
+        if(pw){
+            group_id = pw->pw_gid;
+        }
+    #elif defined(_WIN32) || defined(_WIN64)
+
+        
+    #endif
+}
+
+void User::set_creationDate(){
+    #ifdef defined(__linux__) || defined(__unix__)
+
+    #elif defined(_WIN32) || defined(_WIN64)
+
     #endif
 }

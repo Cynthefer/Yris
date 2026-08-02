@@ -16,27 +16,32 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     */
 
-#ifndef USER_H
-#define USER_H
+
+#include <ctype.h>
+#include <string>
+#include <system.h>
+
+#ifdef defined(_WIN32) || defined(_WIN64)
+    #include <windows.h>
+#elif defined(__linux__) || defined(__unix__)
+    #include <sys/utsname.h>
 #endif
 
-#include <string>
+using namespace std;
 
-class User{
-    public:
-        string username, fullname;
-
-        uid_t user_id;
-
-        gid_t group_id;
-
-        time_t created;
-    
-    private:
-        User();
-        void set_username();
-        void set_fullname();
-        void set_user_id();
-        void set_group_id();
-        void set_creationDate();
+OS::OS(){
+    set_os;
+    set_version;
+    set_release;
+    set_architecture;
 };
+
+void set_os(){
+    #ifdef defined(_WIN32) || defined(_WIN64)
+
+    #elif defined(__linux__) || defined(__unix__)
+        struct utsname os;
+        uname(&os);
+        os_name = to_string(os.sysname);
+    #endif
+}
