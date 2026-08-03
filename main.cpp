@@ -16,11 +16,20 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     */
 
-#include <stdio.h>
+#include <iostream>
 #include <initializer_list>
+#include <user.h>
+
+using namespace std;
 
 struct initializer {
     initializer(){
         //setup
     }
 } initializer;
+
+int main(){
+	User user;
+	cout << user.username;
+ 	return 0;
+}

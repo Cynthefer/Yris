@@ -24,7 +24,7 @@
 
 class User{
     public:
-        string username, fullname;
+        std::string username, fullname;
 
         uid_t user_id;
 
@@ -32,7 +32,7 @@ class User{
 
         time_t created;
     
-    private:
+    public:
         User();
         void set_username();
         void set_fullname();
