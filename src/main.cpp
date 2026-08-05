@@ -32,6 +32,8 @@ int main(){
 	User user;
     if(user.get_fullname().length() == 0){
         cout << "It failed" << endl;
+    } else {
+        cout << user.get_fullname() << endl;
     };
  	return 0;
 }

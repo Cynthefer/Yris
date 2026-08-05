@@ -10,7 +10,7 @@ TARGET = build
 
 CXXFLAGS = -Iinclude 
 
-SOURCES = $(wildcard src/*.cpp)
+SOURCES = $(wildcard src/*.cpp include/*.cpp)
 
 OUTPUT = build/yris
 

@@ -21,27 +21,11 @@
 #include <string>
 #include <system.h>
 
-#ifdef defined(_WIN32) || defined(_WIN64)
-    #include <windows.h>
-#elif defined(__linux__) || defined(__unix__)
-    #include <sys/utsname.h>
-#endif
+#include <sys/utsname.h>
 
 using namespace std;
 
 OS::OS(){
-    set_os;
-    set_version;
-    set_release;
-    set_architecture;
+  //
 };
 
-void set_os(){
-    #ifdef defined(_WIN32) || defined(_WIN64)
-
-    #elif defined(__linux__) || defined(__unix__)
-        struct utsname os;
-        uname(&os);
-        os_name = to_string(os.sysname);
-    #endif
-}

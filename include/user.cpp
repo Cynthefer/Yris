@@ -16,19 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     */
 
-
-//system based headers
-#if defined(_WIN32) || defined(_WIN64)
-    #include <lm.h>
-    #include <Lmcons.h>
-    #include <windows.h>
-    #pragma comment(lib, "netapi32.lib")
-#elif defined(__linux__) || defined(__unix__)
-    #include <sys/unistd.h>
-#elif defined(__APPLE__) && defined(__MACH__)
-    #include <pwd.h>
-    #include <unistd.h>
-#endif
+#include <pwd.h>
+#include <unistd.h>
 
 //Tool headers
 #include <user.h>
@@ -40,43 +29,18 @@
 using namespace std;
 
 User::User(){
-    #ifdef defined(__linux__) || (__unix__)
-
-        uid_t uid = getuid();
-        struct passwd* pw = getpwuid(uid);
-        if(pw){
-            username = pw->pw_name;
-            fullname = pw->gecos;
-            user_id = pw->uid;
-            group_id = pw->gid;
-        } else {
-            username = "unknown";
-            fullname = "unknown";
-            user_id = "";
-            group_id = "";
-            created = "";
-        }
-    #elif defined(_WIN32) || defined(_WIN64)
-
-        // set username
-        char winUsername[UNLEN + 1];
-        DWORD size = UNLEN + 1;
-        if(GetUserNameA(winUsername, &size)){
-            username = winUsername;
-        }
-
-        //setfullname
-        char name[256];
-        DWORD size = 256;
-        GetUserNameA(name, &size);
-
-        LPUSER_INFO_2 info;
-        NetUserGetInfo(NULL, name, 2, (LBYTE*)&info);
-
-        char buffer[256];
-        WideCharToMultiByte(CP_ACP, 0, info->usri2_full_name, -1, buffer, 256, NULL, NULL);
-        fullname = buffer;
-
-        NetApiBufferFree(info);
-    #endif
+    uid_t uid = getuid();
+    struct passwd* pw = getpwuid(uid);
+    if(pw){
+        username = pw->pw_name;
+        fullname = pw->pw_gecos;
+        user_id = pw->pw_uid;
+        group_id = pw->pw_gid;
+    } else {
+        username = "unknown";
+        fullname = "unknown";
+        user_id = -1;
+        group_id = -1;
+        created = -1;
+    }
 }

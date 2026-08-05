@@ -23,7 +23,7 @@
 #include <string>
 
 class User{
-    public:
+    private:
         std::string username, fullname;
 
         uid_t user_id;
@@ -33,6 +33,7 @@ class User{
         time_t created;
 
     public:
+        User();
         std::string get_username(){return username;}
         std::string get_fullname(){return fullname;}
         uid_t get_userId(){return user_id;}

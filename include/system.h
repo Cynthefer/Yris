@@ -27,16 +27,13 @@
 using namespace std;
 
 class OS{
-    public:
-        string os_name;
+    private:
+        char os_name;
         string version;
         string release;
         string architecture;
     
-    private:
+    public:
         OS();
-        void set_os();
-        void set_version();
-        void set_release();
-        void set_architecture();
+
 };
