@@ -26,15 +26,15 @@ class Memory{
     private:
         int RAM_Total;
         int RAM_Free;
-        int ROM;
-        int HDD;
-        int SSD;
+        int Capacity_Total;
+        int Capacity_Free;
+        int Capacity_Available;
     
         public:
             Memory();
             int get_RAM_Total(){return RAM_Total;};
             int get_RAM_Free(){return RAM_Free;};
-            int get_ROM(){return ROM;};
-            int get_HDD(){return HDD;};
-            int get_SSD(){return SSD;};
+            int get_Capacity_Total(){return Capacity_Total;};
+            int get_Capacity_Free(){return Capacity_Free;};
+            int get_Capacity_Available(){return Capacity_Available;};
 };

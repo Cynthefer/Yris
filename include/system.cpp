@@ -21,6 +21,9 @@
 #include <string>
 #include <system.h>
 
+#include <pwd.h>
+#include <libgen.h>
+#include <unistd.h>
 #include <sys/sysinfo.h>
 #include <sys/utsname.h>
 
@@ -38,5 +41,11 @@ OS::OS(){
   struct sysinfo info;
   sysinfo(&info);
   os_uptime = info.uptime;
+
+  uid_t uid = getuid();
+  struct passwd* pw = getpwuid(uid);
+  if(pw){
+    shell = basename(pw->pw_shell);
+  }
 };
 

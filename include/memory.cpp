@@ -19,6 +19,7 @@
 #include <memory.h>
 
 #include <cstdlib>
+#include <filesystem>
 #include <sys/sysinfo.h>
 
 using namespace std;
@@ -32,5 +33,13 @@ Memory::Memory(){
         double freeRam = (double)free_ram / 1024 / 1024 / 1024;
         RAM_Total = totalRam;
         RAM_Free = freeRam;
+    } else {
+        RAM_Total = -1;
+        RAM_Free = -1;
     }
+
+    filesystem::space_info cap = filesystem::space("/");
+    Capacity_Total = cap.capacity / 1024 / 1024 / 1024;
+    Capacity_Available = cap.available / 1024 / 1024 / 1024;
+    Capacity_Free = cap.free / 1024 / 1024 / 1024;
 }

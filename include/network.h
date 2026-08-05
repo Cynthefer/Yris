@@ -16,34 +16,27 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     */
 
-#ifndef SYSTEM_H
-#define SYSTEM_H
-#endif
-
 #pragma once
+
+#ifndef NETWORK_H
+#define NETWORK_H
+#endif
 
 #include <string>
 
 using namespace std;
 
-class OS{
+class Network{
     private:
-        string shell;
-        long os_uptime;
-        char *os_name;
-        string os_version;
-        string os_release;
-        string os_domain;
-        string os_architecture;
+        string host;
+        string local_ip;
+        string public_ip;
+        string interface;
     
     public:
-        OS();
-        string get_osshell(){return shell;};
-        string get_osname(){return os_name;}
-        long get_osuptime(){return os_uptime;};
-        string get_osrelease(){return os_release;}
-        string get_osversion(){return os_version;};
-        string get_osdomain(){return os_domain;};
-        string get_osarchitecture(){return os_architecture;};
-
+        Network();
+        string get_host(){return host;};
+        string get_localIp(){return local_ip;};
+        string get_public_ip(){return public_ip;};
+        string get_interface(){return interface;};
 };

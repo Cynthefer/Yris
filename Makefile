@@ -16,7 +16,7 @@ OUTPUT = build/yris
 
 $(TARGET): $(SOURCES)
 	clear
-	$(CXX) $(CXXFLAGS) $(SOURCES) -o $(OUTPUT) -s
+	$(CXX) $(CXXFLAGS) $(SOURCES) -o $(OUTPUT)
 
 $(INSTALL): $(TARGET)
 	$(INSTALL) -d $(BINDIR)
