@@ -28,12 +28,20 @@ using namespace std;
 
 class OS{
     private:
-        char os_name;
-        string version;
-        string release;
-        string architecture;
+        long os_uptime;
+        char *os_name;
+        string os_version;
+        string os_release;
+        string os_domain;
+        string os_architecture;
     
     public:
         OS();
+        string get_osname(){return os_name;}
+        long get_osuptime(){return os_uptime;};
+        string get_osrelease(){return os_release;}
+        string get_osversion(){return os_version;};
+        string get_osdomain(){return os_domain;};
+        string get_osarchitecture(){return os_architecture;};
 
 };

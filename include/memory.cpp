@@ -16,27 +16,18 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     */
 
-
-#include <ctype.h>
-#include <string>
-#include <system.h>
+#include <memory.h>
 
 #include <sys/sysinfo.h>
-#include <sys/utsname.h>
 
-using namespace std;
-
-OS::OS(){
-  struct utsname os;
-  uname(&os);
-  os_name = os.sysname;
-  os_release = os.release;
-  os_architecture = os.machine;
-  os_version = os.version;
-  os_domain = os.domainname;
-
-  struct sysinfo info;
-  sysinfo(&info);
-  os_uptime = info.uptime;
-};
-
+Memory::Memory(){
+    struct sysinfo info;
+    if(sysinfo(&info) == 0){
+        unsigned long long total_ram = (unsigned long long)info.totalram * info.mem_unit;
+        unsigned long long free_ram = (unsigned long long)info.freeram * info.mem_unit;
+        double total_ram = (double)total_ram / (1024 / 1024 / 1024);
+        double free_ram = (double)free_ram / (1024 / 1024 / 1024);
+        RAM_Total = to_in;
+        RAM_Free = free_ram;
+    }
+}

@@ -16,27 +16,25 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     */
 
+#pragma once
 
-#include <ctype.h>
-#include <string>
-#include <system.h>
+#ifndef MEMORY_H
+#define MEMORY_H
+#endif
 
-#include <sys/sysinfo.h>
-#include <sys/utsname.h>
-
-using namespace std;
-
-OS::OS(){
-  struct utsname os;
-  uname(&os);
-  os_name = os.sysname;
-  os_release = os.release;
-  os_architecture = os.machine;
-  os_version = os.version;
-  os_domain = os.domainname;
-
-  struct sysinfo info;
-  sysinfo(&info);
-  os_uptime = info.uptime;
+class Memory{
+    private:
+        int RAM_Total;
+        int RAM_Free;
+        int ROM;
+        int HDD;
+        int SSD;
+    
+        public:
+            Memory();
+            int get_RAM_Total(){return RAM_Total;};
+            int get_RAM_Free(){return RAM_Free;};
+            int get_ROM(){return ROM;};
+            int get_HDD(){return HDD;};
+            int get_SSD(){return SSD;};
 };
-
