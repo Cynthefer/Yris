@@ -28,9 +28,9 @@ Memory::Memory(){
     if(sysinfo(&info) == 0){
         unsigned long long total_ram = (unsigned long long)info.totalram * info.mem_unit;
         unsigned long long free_ram = (unsigned long long)info.freeram * info.mem_unit;
-        double total_ram = (double)total_ram / (1024 / 1024 / 1024);
-        double free_ram = (double)free_ram / (1024 / 1024 / 1024);
-        RAM_Total = total_ram;
-        RAM_Free = free_ram;
+        double totalRam = (double)total_ram / 1024 / 1024 / 1024;
+        double freeRam = (double)free_ram / 1024 / 1024 / 1024;
+        RAM_Total = totalRam;
+        RAM_Free = freeRam;
     }
 }
