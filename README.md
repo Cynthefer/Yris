@@ -7,7 +7,7 @@
 </div>
 
 <p>
-Yris is an open source, cross platform and compiled specification commandline tool. It is written in <i>C++</i> to ensure memory efficiency, fast performance & access to low-level general specifications. It can display both hardware and software information with a simple command or specific information with arguments on execution. It can display:
+Yris is an open source and compiled specification commandline tool for unix systems. It is written in <i>C++</i> to ensure memory efficiency, fast performance & access to low-level general specifications. It can display both hardware and software information with a simple command or specific information with arguments on execution. It can display:
 </p>
 
 <ol>

@@ -18,7 +18,10 @@
 
 #include <memory.h>
 
+#include <cstdlib>
 #include <sys/sysinfo.h>
+
+using namespace std;
 
 Memory::Memory(){
     struct sysinfo info;
@@ -27,7 +30,7 @@ Memory::Memory(){
         unsigned long long free_ram = (unsigned long long)info.freeram * info.mem_unit;
         double total_ram = (double)total_ram / (1024 / 1024 / 1024);
         double free_ram = (double)free_ram / (1024 / 1024 / 1024);
-        RAM_Total = to_in;
+        RAM_Total = total_ram;
         RAM_Free = free_ram;
     }
 }
