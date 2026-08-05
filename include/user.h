@@ -31,12 +31,11 @@ class User{
         gid_t group_id;
 
         time_t created;
-    
+
     public:
-        User();
-        void set_username();
-        void set_fullname();
-        void set_user_id();
-        void set_group_id();
-        void set_creationDate();
+        std::string get_username(){return username;}
+        std::string get_fullname(){return fullname;}
+        uid_t get_userId(){return user_id;}
+        gid_t get_groupId(){return group_id;}
+        time_t get_creationDate(){return created;}
 };

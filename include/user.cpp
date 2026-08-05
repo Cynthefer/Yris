@@ -24,7 +24,6 @@
     #include <windows.h>
     #pragma comment(lib, "netapi32.lib")
 #elif defined(__linux__) || defined(__unix__)
-    #include <pwd.h>
     #include <sys/unistd.h>
 #elif defined(__APPLE__) && defined(__MACH__)
     #include <pwd.h>
@@ -41,48 +40,32 @@
 using namespace std;
 
 User::User(){
-    set_username();
-    set_fullname();
-    set_user_id();
-    set_group_id();
-    set_creationDate();
-}
-
-void User::set_username(){
-    #ifdef defined(__linux__ ) || defined(__unix__)
+    #ifdef defined(__linux__) || (__unix__)
 
         uid_t uid = getuid();
         struct passwd* pw = getpwuid(uid);
         if(pw){
             username = pw->pw_name;
+            fullname = pw->gecos;
+            user_id = pw->uid;
+            group_id = pw->gid;
+        } else {
+            username = "unknown";
+            fullname = "unknown";
+            user_id = "";
+            group_id = "";
+            created = "";
         }
-    
     #elif defined(_WIN32) || defined(_WIN64)
-        
+
+        // set username
         char winUsername[UNLEN + 1];
         DWORD size = UNLEN + 1;
         if(GetUserNameA(winUsername, &size)){
             username = winUsername;
         }
 
-    #else
-
-        username = "unknown";
-
-    #endif
-}
-
-void User::set_fullname(){
-    #ifdef defined(__linux__) || defined(__unix__)
-
-        uid_t uid = getuid();
-        struct passwd* pw = getpwuid(uid);
-        if(pw){
-            fullname = pw->pw_gecos;
-        }
-
-    #elif defined(_WIN32) || defined(_WIN64)
-        
+        //setfullname
         char name[256];
         DWORD size = 256;
         GetUserNameA(name, &size);
@@ -95,41 +78,5 @@ void User::set_fullname(){
         fullname = buffer;
 
         NetApiBufferFree(info);
-    #endif
-}
-
-void User::set_user_id(){
-    #ifdef defined(__linux__) || defined(__unix__)
-
-        uid_t uid = getuid();
-        struct passwd* pw = getpwuid(uid);
-        if(pw){
-            user_id = pw->pw_uid;
-        }
-    #elif defined(_WIN32) || defined(_WIN64)
-
-        
-    #endif
-}
-
-void User::set_group_id(){
-    #ifdef defined(__linux__) || defined(__unix__)
-
-        uid_t uid = getuid();
-        struct passwd* pw = getpwuid(uid);
-        if(pw){
-            group_id = pw->pw_gid;
-        }
-    #elif defined(_WIN32) || defined(_WIN64)
-
-        
-    #endif
-}
-
-void User::set_creationDate(){
-    #ifdef defined(__linux__) || defined(__unix__)
-
-    #elif defined(_WIN32) || defined(_WIN64)
-
     #endif
 }

@@ -30,6 +30,8 @@ struct initializer {
 
 int main(){
 	User user;
-	cout << user.username;
+    if(user.get_fullname().length() == 0){
+        cout << "It failed" << endl;
+    };
  	return 0;
 }
