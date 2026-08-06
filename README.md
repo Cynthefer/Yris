@@ -14,13 +14,13 @@ Yris is an open source and compiled specification commandline tool for unix syst
     <li><b>User information</b></li>
     <li><b>Operating System information</b></li>
     <li><b>Memory Information</b></li>
-    <li><b>Display Information</b></li>
+    <li><b>Network Information</b></li>
 </ol>
 
 <p>The project file structure is categorized as such:</p>
-<h3>/docs</h3>
+<h3 style="border: 0px; margin: 0px;">/docs</h3>
 <ul><li>This directory contains the tool documentation and how to use it.</li></ul>
-<h3>/include</h3>
+<h3 style="border: 0px; margin: 0px;">/include</h3>
 <ul><li>This directory contains the header files and source files for the tool along with it's functions</li></ul>
-<h3>/src</h3>
+<h3 style="border: 0px; margin: 0px;">/src</h3>
 <ul><li>This directory contains the functions to print out the system information on the terminal.</li></ul>
