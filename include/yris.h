@@ -27,6 +27,37 @@
 #include "memory.h"
 #include "network.h"
 
+#include <string>
+
+using namespace std;
+
 namespace yris{
-    
+    User u;
+    namespace user{
+        string username = u.get_username();
+        string fullname = u.get_fullname();
+        uid_t userID = u.get_userId();
+        gid_t groupID = u.get_groupId();
+        time_t created = u.get_creationDate();
+    }
+
+    OS s;
+    namespace system{
+        string name = s.get_osname();
+        string shell = s.get_osshell();
+        long uptime = s.get_osuptime();
+        string release = s.get_osrelease();
+        string architecture = s.get_osarchitecture();
+        string version = s.get_osversion();
+        string domain = s.get_osdomain();
+    }
+    Memory mem;
+    namespace memory{
+        int Total_RAM = mem.get_RAM_Total();
+        int Free_RAM = mem.get_RAM_Free();
+        int Total_Capacity = mem.get_Capacity_Total();
+        int Available_Capacity = mem.get_Capacity_Available();
+        int Free_Capacity = mem.get_Capacity_Free();
+
+    }
 }

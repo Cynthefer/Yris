@@ -16,21 +16,33 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     */
 
-#include <iostream>
-#include <initializer_list>
-#include <user.h>
-#include <memory.h>
+#include <network.h>
+
+#include <pwd.h>
+#include <string>
+#include <ifaddrs.h>
+#include <arpa/inet.h>
+#include <sys/utsname.h>
 
 using namespace std;
 
-struct initializer {
-    initializer(){
-        //setup
-    }
-} initializer;
+Network::Network(){
+    //hostname
+    struct utsname n;
+    uname(&n);
+    host = n.nodename;
 
-int main(){
-	Memory mem;
-    cout << mem.get_RAM_Total() << " GB" << endl;
-    return 0;
+    //local ip
+    struct ifaddrs *ifaddr;
+    getifaddrs(&ifaddr);
+    struct ifaddrs *ifa = ifaddr;
+    while(ifa && !(ifa->ifa_addr && ifa->ifa_addr->sa_family == AF_INET && string(ifa->ifa_name) != "lo")){
+        ifa = ifa->ifa_next;
+    }
+    if(ifa){
+        local_ip = inet_ntoa(((struct sockaddr_in*)ifa->ifa_addr)->sin_addr);
+    }
+
+    //public ip
+    
 }
