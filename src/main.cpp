@@ -18,8 +18,7 @@
 
 #include <iostream>
 #include <initializer_list>
-#include <user.h>
-#include <memory.h>
+#include <yris.h>
 
 using namespace std;
 
@@ -30,7 +29,6 @@ struct initializer {
 } initializer;
 
 int main(){
-	Memory mem;
-    cout << mem.get_RAM_Total() << " GB" << endl;
+    cout << yris::network::public_ip << endl;
     return 0;
 }

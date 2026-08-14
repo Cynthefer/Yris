@@ -60,4 +60,10 @@ namespace yris{
         int Free_Capacity = mem.get_Capacity_Free();
 
     }
+    Network net;
+    namespace network{
+        string hostname = net.get_host();
+        string local_ip = net.get_localIp();
+        string public_ip = net.get_public_ip();
+    }
 }
