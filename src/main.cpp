@@ -18,17 +18,17 @@
 
 #include <iostream>
 #include <initializer_list>
-#include <yris.h>
+#include <network.h>
 
 using namespace std;
 
 struct initializer {
-    initializer(){
-        //setup
+    initializer(){//
     }
 } initializer;
 
 int main(){
-    cout << yris::network::public_ip << endl;
+    Network net;
+    cout << net.get_public_ip() << endl;
     return 0;
 }
