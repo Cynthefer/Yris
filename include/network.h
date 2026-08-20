@@ -37,6 +37,6 @@ class Network{
         Network();
         string get_host(){return host;};
         string get_localIp(){return local_ip;};
-        string get_public_ip(){return public_ip;};
+        string get_publicIp(){return public_ip;};
         string get_interface(){return interface;};
 };

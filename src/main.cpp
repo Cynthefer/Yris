@@ -28,7 +28,5 @@ struct initializer {
 } initializer;
 
 int main(){
-    Network net;
-    cout << net.get_public_ip() << endl;
     return 0;
 }
