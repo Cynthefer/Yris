@@ -16,6 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     */
 
+#include <yris.h>
 #include <iostream>
 #include <initializer_list>
 #include <network.h>
@@ -23,7 +24,8 @@
 using namespace std;
 
 struct initializer {
-    initializer(){//
+    initializer(){
+        yris::yris_init();
     }
 } initializer;
 

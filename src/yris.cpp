@@ -16,28 +16,29 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     */
 
-#pragma once
+#include <yris.h>
+#include <user.h>
+#include <system.h>
+#include <memory.h>
+#include <network.h>
 
-#ifndef YRIS_H
-#define YRIS_H
-#endif
-
-#define MAX_HR 50
-
-#include "user.h"
-#include "system.h"
-#include "memory.h"
-#include "network.h"
-
-#include <string>
+#include <iomanip>
+#include <iostream>
 
 using namespace std;
 
-namespace yris{
-    char hr[MAX_HR];
-    bool yris_init();
-    void yris_user();
-    void yris_system();
-    void yris_memory();
-    void yris_network();
+bool yris::yris_init(){
+    for(int i = 0; i < MAX_HR; i++){
+        yris::hr = "-";
+        i;
+    }
+
+    return true;
+}
+
+void yris::yris_user(){
+    User user;
+    cout << setw(30) << "Fullname" << ":" << user.get_fullname() << endl;
+    cout << setw(30) << "Username" << ":" << user.get_username() << endl;
+
 }
