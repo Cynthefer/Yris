@@ -47,29 +47,33 @@ Network::Network(){
     }
 
     //public ip
+    public_ip = "offline";
     int sock = socket(AF_INET, SOCK_STREAM, 0);
+    if(sock < 0){}
     struct sockaddr_in server;
     server.sin_family = AF_INET;
     server.sin_port = htons(80);
     inet_pton(AF_INET, "34.160.111.145", &server.sin_addr);
-    if(sock){
-        connect(sock, (struct sockaddr *)&server, sizeof(server));
-        const char* request = "GET /ip HTTP/1.0\r\nHost: ifconfig.me\r\n\r\n";
-        if(connect(sock, (struct sockaddr *)&server, sizeof(server)) == 0 && strlen(request) <= 0){
-            send(sock, request, strlen(request), 0);
-            char buffer[256] = {0};
-            int net_bytes = recv(sock, buffer, sizeof(buffer)-1, 0);
-            if(net_bytes > 0){
-                string response(buffer);
-                size_t start = response.find("\r\n\r\n");
-                if(start != string::npos){
-                    string body = response.substr(start + 4);
-                    public_ip = body;
-                }
-            }
-        }
-    } else {
-        public_ip = "offline";
+    
+    connect(sock, (sockaddr *)&server, sizeof(server));
+    char *request = "Get /ip HTTP/1.1\r\nHost: ifconfig.me\r\nConnection: close\r\n\r\n";
+    
+    send(sock, request, strlen(request), 0);
+    char buffer[1024];
+    string response;
+    int bytes;
+
+    while((bytes = recv(sock, buffer, sizeof(buffer)-1, 0)) > 0){
+        buffer[bytes] = '\0';
+        response += buffer;
     }
+    size_t pos = response.find("\r\n\r\n");
+    if(pos != string::npos){
+        public_ip = response.substr(pos + 4);
+        while(!public_ip.empty() && (public_ip.back() == '\n' || public_ip.back() == '\r')){
+            public_ip.pop_back();
+        }
+    }
+
     close(sock);
 }
